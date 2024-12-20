@@ -6,38 +6,42 @@
 
 {% block content %}
 
-<main id="body" class="container my-5">
-    <article id="welcome">
-        <header class="text-center mb-5">
-            <h1 class="display-4 text-dark">Персональные образы для твоего гардероба</h1>
-            <p class="lead text-muted">Добавь вещи в гардероб и смотри, какие образы можно составить</p>
-            <section class="buttons mt-4">
-                <a href="{% url 'register_page_view' %}" class="btn btn-primary btn-lg">Начать</a>
-            </section>
-        </header>
 
-        <section class="how-it-works">
-            <header class="inner text-center mb-4">
-                <h2 class="h2 text-dark">Как это работает</h2>
-            </header>
+<section class="py-5 bg-primary text-white text-center hero-section">
+    <div class="container position-relative overflow-hidden">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h1 class="display-3 fw-bold text-uppercase">OutfitMate</h1>
+                <p class="lead mt-3">
+                    Современные IT-решения для малого и среднего бизнеса.
+                </p>
+                <a href="{% url 'register_page_view'%}" class="btn btn-light btn-lg mt-4">Попробовать</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <section class="body">
-                <div class="inner-body row g-4">
-                    <article class="edit-user-items col-md-4 text-center">
-                        <h3 class="h5">1. Добавь свои вещи в гардероб на OutfitMate</h3>
-                        <img class="img-fluid rounded mt-3" alt="1. Добавь свои вещи в гардероб на OutfitMate" src="https://cdn.lookastic.com/images/how-it-works/ru/edit-user-items.png" />
-                    </article>
-                    <article class="recommended-look col-md-4 text-center">
-                        <h3 class="h5">2. Получай рекомендации в виде образов, которые ты можешь повторить из своих вещей</h3>
-                        <img class="img-fluid rounded mt-3" alt="2. Получай рекомендации в виде модных образов, которые ты можешь повторить из своих вещей" src="https://cdn.lookastic.com/images/how-it-works/ru/recommended-look.png" />
-                    </article>
-                    <article class="recommended-item col-md-4 text-center">
-                        <h3 class="h5">3. Узнай, каких вещей не хватает в твоем гардеробе (и почему)</h3>
-                        <img class="img-fluid rounded mt-3" alt="3. Узнай, каких вещей не хватает в твоем гардеробе (и почему)" src="https://cdn.lookastic.com/images/how-it-works/ru/recommended-item.png" />
-                    </article>
-                </div>
-            </section>
-        </section>
-    </article>
-</main>
+<section class="how-it-works">
+    <header class="inner text-center mb-4">
+        <h2 class="h2 text-dark">Как это работает</h2>
+    </header>
+
+    <section class="body">
+        <div class="inner-body row g-4">
+            <article class="edit-user-items col-md-4 text-center">
+                <h3 class="h5">1. Добавь свои вещи в гардероб на OutfitMate</h3>
+                <img class="img-fluid rounded mt-3" alt="1. Добавь свои вещи в гардероб на OutfitMate" src="https://cdn.lookastic.com/images/how-it-works/ru/edit-user-items.png" />
+            </article>
+            <article class="recommended-look col-md-4 text-center">
+                <h3 class="h5">2. Получай рекомендации в виде образов, которые ты можешь повторить из своих вещей</h3>
+                <img class="img-fluid rounded mt-3" alt="2. Получай рекомендации в виде модных образов, которые ты можешь повторить из своих вещей" src="https://cdn.lookastic.com/images/how-it-works/ru/recommended-look.png" />
+            </article>
+            <article class="recommended-item col-md-4 text-center">
+                <h3 class="h5">3. Узнай, каких вещей не хватает в твоем гардеробе (и почему)</h3>
+                <img class="img-fluid rounded mt-3" alt="3. Узнай, каких вещей не хватает в твоем гардеробе (и почему)" src="https://cdn.lookastic.com/images/how-it-works/ru/recommended-item.png" />
+            </article>
+        </div>
+    </section>
+</section>
+
 {% endblock %}

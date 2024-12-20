@@ -41,7 +41,7 @@ class User(AbstractUser):
 
 class Item(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название вещи')
-    filters = models.ManyToManyField('Category', related_name='foods', verbose_name='Категория')
+    filters = models.ManyToManyField('Category', related_name='foods', verbose_name='Категория', blank=True)
     image = models.ImageField(upload_to='items/', verbose_name='Изображение вещи', blank=True, null=True)
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
 

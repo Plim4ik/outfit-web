@@ -55,6 +55,7 @@ class Item(models.Model):
 
 class Outfit(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название образа')
+    image = models.ImageField(upload_to='outfits/', verbose_name='Изображение образа', blank=True, null=True)
     items = models.ManyToManyField(Item, verbose_name='Вещи в образе', related_name='outfits')
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')

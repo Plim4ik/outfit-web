@@ -52,31 +52,29 @@ class User(AbstractUser):
     def __str__(self):
         return self.first_name
 
-class Insurance(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Наименование')
+class Item(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название вещи')
+    filters = models.ManyToManyField('Filter', related_name='foods', verbose_name='Фильтры')
+    image = models.ImageField(upload_to='items/', verbose_name='Изображение вещи', blank=True, null=True)
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+
+    class Meta:
+        verbose_name = 'Вещь'
+        verbose_name_plural = 'Вещи'
+
+    def __str__(self):
+        return f"{self.filters.name}: {self.name}"
+
+class Outfit(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название образа')
+    items = models.ManyToManyField(Item, verbose_name='Вещи в образе', related_name='outfits')
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
     class Meta:
-        verbose_name = 'Страховка'
-        verbose_name_plural = 'Страховки'
+        verbose_name = 'Образ'
+        verbose_name_plural = 'Образы'
 
     def __str__(self):
-        return self.name
-    
-class Request(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    insurance = models.ForeignKey(Insurance, on_delete=models.CASCADE, verbose_name='Страховка', default=1)
-    message = models.TextField(verbose_name='Сообщение')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
-
-    class Meta:
-        verbose_name = 'Заявка'
-        verbose_name_plural = 'Заявки'
-
-    def __str__(self):
-        return f"Заявка от {self.user.username} на {self.insurance.name}"
-    
+        return f"Образ {self.name}"

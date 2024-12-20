@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Insurance, Request, User
+from .models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -7,39 +7,6 @@ from django.contrib.auth import authenticate, login, logout
 def home(request):
     return render(request, 'index.html')
 
-
-def insurance_list(request):
-    insurances = Insurance.objects.all()
-    return render(request, 'insurance_list.html', {'insurances': insurances})
-
-def insurance_detail(request, insurance_id):
-    insurance = get_object_or_404(Insurance, id=insurance_id)
-    return render(request, 'insurance_detail.html', {'insurance': insurance})
-
-
-
-@login_required(login_url='login_page_view')
-def create_request(request):
-    if request.method == 'POST':
-        message = request.POST.get('message')
-        insurance_id = request.POST.get('insurance')
-        insurance = get_object_or_404(Insurance, id=insurance_id)
-        new_request = Request.objects.create(
-            user=request.user,
-            insurance=insurance,
-            message=message
-        )
-        messages.success(request, 'Ваша заявка принята.')
-        return redirect('home')
-
-    insurances = Insurance.objects.all()
-    return render(request, 'request_form.html', {'insurances': insurances})
-
-
-@login_required(login_url='login_page_view')
-def my_requests(request):
-    user_requests = Request.objects.filter(user=request.user)
-    return render(request, 'my_requests.html', {'requests': user_requests})
 
 
 def login_page_view(request):

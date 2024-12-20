@@ -3,6 +3,9 @@
     --primary-color-hover: rgba(42, 165, 96, 0.9);
 }
 
+body {
+    padding-top: 60px;
+}
 .hero-section {
     height: 100vh;
     display: flex;

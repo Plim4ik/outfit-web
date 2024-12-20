@@ -8,7 +8,6 @@ def home(request):
     return render(request, 'index.html')
 
 
-
 def login_page_view(request):
     if request.user.is_authenticated:
         return redirect('my_requests')

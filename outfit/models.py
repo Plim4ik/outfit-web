@@ -14,19 +14,6 @@ class Category(models.Model):
         return self.name
 
 
-class Filter(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Название фильтра')
-    category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, related_name='filters', verbose_name='Категория'
-    )
-
-    class Meta:
-        verbose_name = 'Фильтр'
-        verbose_name_plural = 'Фильтры'
-
-    def __str__(self):
-        return f"{self.category.name}: {self.name}"
-
 # Create your models here.
 class User(AbstractUser):
     groups = models.ManyToManyField(
@@ -54,16 +41,17 @@ class User(AbstractUser):
 
 class Item(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название вещи')
-    filters = models.ManyToManyField('Filter', related_name='foods', verbose_name='Фильтры')
+    filters = models.ManyToManyField('Category', related_name='foods', verbose_name='Категория')
     image = models.ImageField(upload_to='items/', verbose_name='Изображение вещи', blank=True, null=True)
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Вещь'
         verbose_name_plural = 'Вещи'
-
+    
     def __str__(self):
-        return f"{self.filters.name}: {self.name}"
+        return self.name
+
 
 class Outfit(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название образа')

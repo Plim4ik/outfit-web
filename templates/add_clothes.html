@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='utf-8'>
+    <meta content='initial-scale=1.0,width=device-width' name='viewport'>
+    <style type='text/css'>
+        .spinner {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin: 60px auto;
+            font-size: 10px;
+            position: relative;
+            text-indent: -9999em;
+            border: 6px solid #eaeaea;
+            border-left: 6px solid rgba(42, 165, 96, 0.58);
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation: spinner 0.9s infinite linear;
+            animation: spinner 0.9s infinite linear;
+        }
+
+        .spinner:after {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
+
+        .spinner.small {
+            width: 40px;
+            height: 40px;
+            margin: 40px auto;
+        }
+
+        .compact-spinner {
+            margin: 0 auto;
+        }
+
+        @-webkit-keyframes spinner {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            background-image: url(https://cdn.lookastic.com/images/spinner.svg) center no-repeat;
+            text-indent: -9999px;
+            color: transparent;
+        }
+
+        #header {
+            background: #2AA560;
+            height: 50px;
+        }
+
+        #header > * {
+            opacity: 0;
+            margin: 0;
+        }
+
+        #navigation {
+            display: none;
+        }
+
+        #body {
+            opacity: 0;
+        }
+    </style>
+    <link href='//cdn.lookastic.ru' rel='dns-prefetch'>
+    <link crossorigin='true' href='//cdn.lookastic.ru' rel='preconnect'>
+    <link crossorigin='true' href='https://cdnjs.cloudflare.com' rel='preconnect'>
+    <link rel="stylesheet" media="screen"
+          href="https://cdn.lookastic.com/assets/desktop/layouts/application-6dde7bd2a819f8d3c26838f120b4fd4c50b00f740aae78e628660940594ab7f0.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" data-turbolinks-track="reload"
+            defer="defer"></script>
+    <script src="https://cdn.lookastic.com/assets/desktop/application-4d97959ba4f13ce8adeb79ada9019982bc0dc5aa452ac70cefbfa8a7ac1c66a3.js"
+            data-turbolinks-track="reload" defer="defer"></script>
+    <script src="https://cdn.lookastic.com/assets/shared/wardrobe-60393eaa8c343db2cc6eb0bc60251f3c4bb06328074302ccb4d92372d7985be0.js"
+            data-turbolinks-track="reload" defer="defer"></script>
+    <script src="https://cdn.lookastic.com/assets/shared/ouibounce-7d71d96f205314202b5f69e24d834cd0c2c6871ea1ea5f8f146ac2eff3ff03fb.js"
+            data-turbolinks-track="reload" defer="defer"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" defer="defer"></script>
+    <![endif]-->
+    <link href='https://lookastic.ru/wardrobe/welcome' rel='canonical'>
+    <meta content='22d977a904ecd181d60a111d88320bc1' name='p:domain_verify'>
+    <meta content='tR4EPPqVCWeP-NpunP7xAdFjAk18Kr0vR4kYwRd3_8Y' name='google-site-verification'>
+    <meta content='938bc2b351' name='verify-admitad'>
+    <link href='//cdn.lookastic.ru/apple-touch-icon-180x180.png' rel='apple-touch-icon' sizes='180x180'>
+    <link href='//cdn.lookastic.ru/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+    <link href='//cdn.lookastic.ru/android-chrome-192x192.png' rel='icon' sizes='192x192' type='image/png'>
+    <link href='//cdn.lookastic.ru/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
+    <link href='//cdn.lookastic.ru/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+    <link href='//cdn.lookastic.ru/manifest.json' rel='manifest'>
+    <meta content='no-cache' name='turbolinks-cache-control'>
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token"
+          content="IP6GplcLP+UTWIRWaPCBrbxAR4gJBTufH3L85+IySx03EbW8lIVMBZcHkDGCDisyYtRjonkT/+wGzbs7rgkcyg=="/>
+    <title>Добро пожаловать на OutfitMate! | OutfitMate</title>
+</head>
+<body data-current-user-id='3377475' data-user-signed-in='true'>
+<section id='header-wrapper'>
+    <header class='men' id='header'>
+        <a class="lookastic" href="/">OutfitMate</a>
+        <section class='search' onclick='new ItemPicker(&#39;men&#39;);'>
+            <i class='icon-search'></i>
+            Поиск
+        </section>
+        <section class='account' data-role='account'>
+            <section class='user' data-target='#' data-toggle='dropdown'>
+<span class='username'>
+Гость
+</span>
+                <i class='icon-caret-down'></i>
+            </section>
+            <ul class='dropdown-menu' role='menu'>
+                <li>
+                    <a href="/users/edit">Настройки</a>
+                </li>
+                <li>
+                    <a href="/user/badges">Бейджи</a>
+                </li>
+                <li class='divider'></li>
+                <li>
+                    <a href="welcome.html">Выйти</a>
+                </li>
+            </ul>
+        </section>
+    </header>
+</section>
+<section data-role='navigation' id='navigation-wrapper'>
+    <nav id='navigation'>
+        <section class='sex-dropdown'>
+            <a data-toggle="dropdown" href="/wardrobe/edit">Мой гардероб
+                <i class='icon-caret-down'></i>
+            </a>
+            <ul class='dropdown-menu' role='menu'>
+                <a href="/wardrobe/edit">Редактировать</a>
+                <a href="/wardrobe/items/recommended">Рекомендации</a>
+                <a href="/wardrobe/items/matching">Что с чем сочетать</a>
+                <a href="/wardrobe/items/favorited">Сохраненное</a>
+                <a href="/wardrobe/items/hidden">Игнор</a>
+            </ul>
+        </section>
+        <section class='sex-dropdown'>
+            <a data-toggle="dropdown" href="/wardrobe/edit">Образы
+                <i class='icon-caret-down'></i>
+            </a>
+            <ul class='dropdown-menu' role='menu'>
+                <a href="/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0">Рекомендованные</a>
+                <a href="/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0?looks_type=favorited">Сохраненные</a>
+            </ul>
+        </section>
+    </nav>
+</section>
+<div class='spinner' id='critical-spinner'></div>
+<main data-service='[&quot;UserItemToggler&quot;, &quot;VoteToggler&quot;]' id='body'>
+    <section id='wardrobe-welcome'>
+        <header>
+            <h1>
+                Добро пожаловать на OutfitMate!
+            </h1>
+            <p>
+                OutfitMate проанализирует твой гардероб и покажет, какие образы ты можешь составить
+            </p>
+            <p>
+                Необходимо добавить хотя бы 10 вещей из твоего гардероба, чтобы получить рекомендации.
+            </p>
+        </header>
+        <div class='suggested-items-container'>
+            <section class='suggested-items' data-current-page='1' data-service='InfiniteScroll' data-total-pages='519'
+                     data-use-cache='0'>
+                <section class='body' data-infinite-scroll-content data-service='ToggleUserItemsFromSuggestedItems'>
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='468792'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/голубые-легкие-джинсы-original-9756403.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Голубые джинсы
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='468486'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/темно-синий-свитер-с-v-образным-вырезом-original-395658.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Темно-синий свитер
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='355266'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/белые-брюки-чинос-original-464508.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Белые джинсы
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='386478'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/белая-классическая-рубашка-original-355266.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Белая рубашка
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='386784'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/белая-футболка-с-круглым-вырезом-original-386478.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Белая футболка
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='470016'>
+                        <figure>
+                            <img src="https://avatars.mds.yandex.net/i?id=475b5f305eb8c6f8b91b8d1a1e1e439f_l-4569110-images-thumbs&n=13"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Темно-синие джинсы
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='3402249'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/светло-коричневые-брюки-чинос-original-3402249.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Светло-коричневые брюки
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='542538'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/белые-низкие-кеды-original-542538.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Белые кеды
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='2899293'>
+                        <figure>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfJe6A_Z4WWCeI9HCCwx_S5rLuadWGUQjLA&s"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Синие кеды
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='360468'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/серый-пиджак-original-441252.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Серый пиджак
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='437274'>
+                        <figure>
+                            <img src="https://static.cdn.oskelly.ru/product/1929256/item-7141b474-9a97-450c-8af6-8a8d767fba60.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Темно-синяя куртка
+</span>
+                    </article>
+
+                    <article class='suggested-item' data-action='toggle-suggested-user-item' data-infinite-scroll-item
+                             data-item-id='463284'>
+                        <figure>
+                            <img src="https://cdn.lookastic.ru/черное-длинное-пальто-original-428400.jpg"/>
+                            <div class='overlay'>
+                                <div class='icon'>
+                                    <i class='icon-check'></i>
+                                </div>
+                                <div class='icon'>
+                                    <i class='icon-plus'></i>
+                                </div>
+                            </div>
+                        </figure>
+                        <span class='name'>
+Черное длинное пальто
+</span>
+                    </article>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const requiredItems = 11;
+            let selectedItems = 0;
+            const countElement = document.querySelector('[data-role="user-items-to-create-count"]');
+
+            function updateRemainingCount() {
+                const remaining = requiredItems - selectedItems;
+                countElement.textContent = remaining;
+
+                if (remaining <= 0) {
+                    window.location.href = 'man_fashion.html';
+                }
+            }
+
+            document.querySelectorAll('.suggested-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    selectedItems += 1;
+                    updateRemainingCount();
+                });
+            });
+
+            updateRemainingCount();
+        });
+    </script>
+</section>
+<footer data-infinite-scroll-loader>
+
+                    <nav class='pagination'>
+                        <a data-rel="next"
+                           href="/wardrobe/welcome?excluded_items_ids%5B%5D=468792&amp;excluded_items_ids%5B%5D=468486&amp;excluded_items_ids%5B%5D=355266&amp;excluded_items_ids%5B%5D=386478&amp;excluded_items_ids%5B%5D=386784&amp;excluded_items_ids%5B%5D=470016&amp;excluded_items_ids%5B%5D=3402249&amp;excluded_items_ids%5B%5D=542538&amp;excluded_items_ids%5B%5D=2899293&amp;excluded_items_ids%5B%5D=360468&amp;excluded_items_ids%5B%5D=437274&amp;excluded_items_ids%5B%5D=463284">Next</a>
+                    </nav>
+                </footer>
+            </section>
+        </div>
+        <section class='progress'
+                 data-redirect-url='man_fashion.html'
+                 data-service='OnboardingProgressTracker' data-user-items-required='10'>
+            <p class='label'>
+                Осталось добавить вещей: <span data-role='user-items-to-create-count'></span>
+            </p>
+            <a class="primary" href="man_fashion.html">Ура! Смотреть рекомендации
+                <i class='icon-chevron-right'></i>
+            </a></section>
+    </section>
+
+</main>
+
+<script defer src='https://www.googletagmanager.com/gtag/js?id=UA-6317758-12'></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-6317758-12');
+</script>
+<script>
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(55812235, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        trackHash:true
+    });
+</script>
+
+
+</body>
+</html>

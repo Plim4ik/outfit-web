@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='utf-8'>
+    <meta content='initial-scale=1.0,width=device-width' name='viewport'>
+    <style type='text/css'>
+        .spinner{border-radius:50%;width:60px;height:60px;margin:60px auto;font-size:10px;position:relative;text-indent:-9999em;border:6px solid #eaeaea;border-left:6px solid rgba(42,165,96,0.58);-webkit-transform:translateZ(0);-ms-transform:translateZ(0);transform:translateZ(0);-webkit-animation:spinner 0.9s infinite linear;animation:spinner 0.9s infinite linear}.spinner:after{border-radius:50%;width:60px;height:60px}.spinner.small{width:40px;height:40px;margin:40px auto}.compact-spinner{margin:0 auto}@-webkit-keyframes spinner{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@keyframes spinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}html,body{margin:0;padding:0}img{background-image:url(https://cdn.lookastic.com/images/spinner.svg) center no-repeat;text-indent:-9999px;color:transparent}#header{background:#2AA560;height:50px}#header>*{opacity:0;margin:0}#navigation{display:none}#body{opacity:0}
+
+    </style>
+    <link href='//cdn.lookastic.ru' rel='dns-prefetch'>
+    <link crossorigin='true' href='//cdn.lookastic.ru' rel='preconnect'>
+    <link crossorigin='true' href='https://cdnjs.cloudflare.com' rel='preconnect'>
+    <link rel="stylesheet" media="screen"
+          href="https://cdn.lookastic.com/assets/desktop/layouts/application-6dde7bd2a819f8d3c26838f120b4fd4c50b00f740aae78e628660940594ab7f0.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" data-turbolinks-track="reload"
+            defer="defer"></script>
+    <script src="https://cdn.lookastic.com/assets/desktop/application-4d97959ba4f13ce8adeb79ada9019982bc0dc5aa452ac70cefbfa8a7ac1c66a3.js"
+            data-turbolinks-track="reload" defer="defer"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" defer="defer"></script>
+    <![endif]-->
+    <link href='https://lookastic.ru/users/update-guest-to-user' rel='canonical'>
+    <meta content='22d977a904ecd181d60a111d88320bc1' name='p:domain_verify'>
+    <meta content='tR4EPPqVCWeP-NpunP7xAdFjAk18Kr0vR4kYwRd3_8Y' name='google-site-verification'>
+
+
+    <title>OutfitMate</title>
+</head>
+<body data-current-user-id='3357935' data-user-signed-in='true'>
+<section id='header-wrapper'>
+    <header class='men' id='header'>
+        <a class="lookastic" href="welcome.html">OutfitMate</a>
+        <section class='search' onclick='new ItemPicker(&#39;men&#39;);'>
+            <i class='icon-search'></i>
+            Поиск
+        </section>
+        <section class='account' data-role='account'>
+            <section class='user' data-target='#' data-toggle='dropdown'>
+<span class='username'>
+Гость
+</span>
+                <i class='icon-caret-down'></i>
+            </section>
+            <ul class='dropdown-menu' role='menu'>
+                <li>
+                    <a href="/users/edit">Настройки</a>
+                </li>
+                <li>
+                    <a href="/user/badges">Бейджи</a>
+                </li>
+                <li class='divider'></li>
+                <li>
+                    <a rel="nofollow" data-method="delete" href="welcome.html">Выйти</a>
+                </li>
+            </ul>
+        </section>
+    </header>
+</section>
+<div class='spinner' id='critical-spinner'></div>
+<main data-service='[&quot;UserItemToggler&quot;, &quot;VoteToggler&quot;]' id='body'>
+    <form class="edit_user" id="save-guest" action="/users/update-guest-to-user" accept-charset="UTF-8" method="post">
+        <input type="hidden" name="_method" value="patch"/><input type="hidden" name="authenticity_token"
+                                                                  value="a1On/OR11j+lRBpCBCs61tgV8C3ETX54BADMz8EselvH468ZEhpLwVNYV/uWcvcVLY+9J2dWzjzxe7ybnbbbCQ=="/>
+        <header>
+            <h1>Вход в аккаунт</h1>
+        </header>
+        <section class='input'>
+            <label for="user_first_name">Имя</label>
+            <section class='body'>
+                <input autofocus="autofocus" autocomplete="given-name" required="required" type="text"
+                       name="user[first_name]" id="user_first_name"/>
+            </section>
+        </section>
+        <section class='input'>
+            <label for="user_email">Email</label>
+            <section class='body'>
+                <input autocomplete="email" required="required" type="email" name="user[email]" id="user_email"/>
+            </section>
+        </section>
+        <section class='input'>
+            <label for="user_password">Пароль</label>
+            <section class='body'>
+                <input autocomplete="new-password" required="required" type="password" name="user[password]"
+                       id="user_password"/>
+                <p class='help'>
+                    Минимум 8 символов
+                </p>
+            </section>
+        </section>
+        <footer>
+            <input type="submit" name="commit" value="Войти в аккаунт" data-disable-with="Войти в аккаунт"/>
+        </footer>
+        <section class='omniauth'>
+        </a></section>
+
+    </form>
+</main>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-6317758-12');
+</script>
+<script>
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(55812235, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        trackHash:true
+    });
+</script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function(){
+      new YandexRtb;
+
+    });
+</script>
+</body>
+</html>

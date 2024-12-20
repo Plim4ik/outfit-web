@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='utf-8'>
+    <meta content='initial-scale=1.0,width=device-width' name='viewport'>
+    <style type='text/css'>
+        .spinner {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin: 60px auto;
+            font-size: 10px;
+            position: relative;
+            text-indent: -9999em;
+            border: 6px solid #eaeaea;
+            border-left: 6px solid rgba(42, 165, 96, 0.58);
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation: spinner 0.9s infinite linear;
+            animation: spinner 0.9s infinite linear;
+        }
+
+        .spinner:after {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
+
+        .spinner.small {
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+        }
+
+        .compact-spinner {
+            margin: 0 auto;
+        }
+
+        @-webkit-keyframes spinner {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            background-image: url(https://cdn.lookastic.com/images/spinner.svg) center no-repeat;
+            text-indent: -9999px;
+            color: transparent;
+        }
+
+        #header {
+            background: #2AA560;
+            height: 40px;
+        }
+
+        #header > * {
+            opacity: 0;
+            margin: 0;
+        }
+
+        #navigation {
+            display: none;
+        }
+
+        #body {
+            opacity: 0;
+        }
+    </style>
+    <link href='//cdn.lookastic.ru' rel='dns-prefetch'>
+    <link crossorigin='true' href='//cdn.lookastic.ru' rel='preconnect'>
+    <link crossorigin='true' href='https://cdnjs.cloudflare.com' rel='preconnect'>
+    <link rel="stylesheet" media="screen"
+          href="https://cdn.lookastic.com/assets/desktop/layouts/application-6dde7bd2a819f8d3c26838f120b4fd4c50b00f740aae78e628660940594ab7f0.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" data-turbolinks-track="reload"
+            defer="defer"></script>
+    <script src="https://cdn.lookastic.com/assets/desktop/application-4d97959ba4f13ce8adeb79ada9019982bc0dc5aa452ac70cefbfa8a7ac1c66a3.js"
+            data-turbolinks-track="reload" defer="defer"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" defer="defer"></script>
+    <![endif]-->
+    <link href='https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0'
+          rel='canonical'>
+    <meta content='22d977a904ecd181d60a111d88320bc1' name='p:domain_verify'>
+    <meta content='tR4EPPqVCWeP-NpunP7xAdFjAk18Kr0vR4kYwRd3_8Y' name='google-site-verification'>
+    <meta content='938bc2b351' name='verify-admitad'>
+    <link href='//cdn.lookastic.ru/apple-touch-icon-180x180.png' rel='apple-touch-icon' sizes='180x180'>
+    <link href='//cdn.lookastic.ru/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+    <link href='//cdn.lookastic.ru/android-chrome-192x192.png' rel='icon' sizes='192x192' type='image/png'>
+    <link href='//cdn.lookastic.ru/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
+    <link href='//cdn.lookastic.ru/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+    <link href='//cdn.lookastic.ru/manifest.json' rel='manifest'>
+    <meta content='no-cache' name='turbolinks-cache-control'>
+    <meta name="csrf-param" content="authenticity_token"/>
+    <meta name="csrf-token"
+          content="THnoiZnd2W8U7DCWKx4eKzaS/2BFZDs6dZZ9+JBIs5xr75FnmnVtto+fbm8t5J9CtPiCZ7mxyhVBtS+eVUXypQ=="/>
+    <title>Мужкие образы | OutfitMate</title>
+    <meta name="description" content="Смотри и вдохновляйся: модные образы">
+    <link rel="alternate" href="https://lookastic.com/men" hreflang="en-US">
+    <link rel="alternate" href="https://lookastic.es/moda-hombre" hreflang="es-ES">
+    <link rel="alternate"
+          href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0" hreflang="ru">
+    <link rel="alternate" href="https://lookastic.de/herrenmode" hreflang="de-DE">
+    <link rel="alternate" href="https://lookastic.fr/mode-homme" hreflang="fr-FR">
+    <link rel="alternate" href="https://lookastic.it/moda-uomo" hreflang="it">
+    <link rel="next"
+          href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0?page=2">
+</head>
+<body data-current-user-id='3357935' data-user-signed-in='true'>
+<section id='header-wrapper'>
+    <header class='men' id='header'>
+        <a class="lookastic" href="welcome.html">OutfitMate</a>
+        <section class='search' onclick='new ItemPicker(&#39;men&#39;);'>
+            <i class='icon-search'></i>
+            Поиск
+        </section>
+        <section class='account' data-role='account'>
+            <section class='user' data-target='#' data-toggle='dropdown'>
+<span class='username'>
+Гость
+</span>
+                <i class='icon-caret-down'></i>
+            </section>
+            <ul class='dropdown-menu' role='menu'>
+                <li>
+                    <a href="/users/edit">Настройки</a>
+                </li>
+                <li>
+                    <a href="/user/badges">Бейджи</a>
+                </li>
+                <li class='divider'></li>
+                <li>
+                    <a rel="nofollow" data-method="delete" href="welcome.htm">Выйти</a>
+                </li>
+            </ul>
+        </section>
+    </header>
+</section>
+<section data-role='navigation' id='navigation-wrapper'>
+    <nav id='navigation'>
+        <section class='sex-dropdown'>
+            <a data-toggle="dropdown" href="/wardrobe/edit">Мой гардероб
+                <i class='icon-caret-down'></i>
+            </a>
+            <ul class='dropdown-menu' role='menu'>
+                <a href="/wardrobe/edit">Редактировать</a>
+                <a href="/wardrobe/items/recommended">Рекомендации</a>
+                <a href="/wardrobe/items/matching">Что с чем сочетать</a>
+                <a href="/wardrobe/items/favorited">Сохраненное</a>
+                <a href="/wardrobe/items/hidden">Игнор</a>
+            </ul>
+        </section>
+        <section class='sex-dropdown'>
+            <a data-toggle="dropdown" href="/wardrobe/edit">Образы
+                <i class='icon-caret-down'></i>
+            </a>
+            <ul class='dropdown-menu' role='menu'>
+                <a href="/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0">Рекомендованные</a>
+                <a href="/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0?looks_type=favorited">Сохраненные</a>
+            </ul>
+        </section>
+        <a href="/site/contact-us">Написать нам</a>
+    </nav>
+</section>
+<div class='spinner' id='critical-spinner'></div>
+<main data-service='[&quot;UserItemToggler&quot;, &quot;VoteToggler&quot;]' id='body'>
+    <section data-tab-content id='looks-search'>
+        <nav data-react-class="LooksSearchComponent"
+             data-react-props="{&quot;links&quot;:{&quot;season&quot;:{&quot;summer&quot;:&quot;летом&quot;,&quot;winter&quot;:&quot;зимой&quot;,&quot;fall&quot;:&quot;осенью&quot;,&quot;spring&quot;:&quot;весной&quot;},&quot;formalness&quot;:{&quot;relaxed&quot;:&quot;в-спортивном-стиле&quot;,&quot;casual&quot;:&quot;в-стиле-кэжуал&quot;,&quot;smart_casual&quot;:&quot;в-стиле-смарт-кэжуал&quot;,&quot;dressy&quot;:&quot;в-деловом-стиле&quot;},&quot;weather&quot;:{&quot;cold&quot;:&quot;в-холодную-погоду&quot;,&quot;chill&quot;:&quot;в-прохладную-погоду&quot;,&quot;warm&quot;:&quot;в-теплую-погоду&quot;,&quot;hot&quot;:&quot;в-жару&quot;},&quot;age&quot;:{&quot;17&quot;:&quot;подростки&quot;,&quot;20&quot;:&quot;20-летние&quot;,&quot;30&quot;:&quot;30-летние&quot;,&quot;40&quot;:&quot;за-40&quot;,&quot;50&quot;:&quot;за-50&quot;,&quot;60&quot;:&quot;за-60&quot;},&quot;item_looks_search&quot;:&quot;как-носить-с&quot;,&quot;item_looks&quot;:&quot;с-чем-носить&quot;,&quot;looks&quot;:&quot;луки&quot;,&quot;sex_root_url&quot;:&quot;https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0&quot;,&quot;join_url&quot;:&quot;/users/sign_up?medium=looks_search\u0026sex=men&quot;},&quot;translations&quot;:{&quot;click_to_pick_item&quot;:&quot;Выбрать вещь&quot;,&quot;click_to_pick_another_item&quot;:&quot;Изменить&quot;,&quot;click_to_clear&quot;:&quot;Очистить&quot;,&quot;formalness&quot;:{&quot;values&quot;:[{&quot;value&quot;:&quot;&quot;,&quot;text&quot;:&quot;Любой стиль&quot;},{&quot;value&quot;:&quot;relaxed&quot;,&quot;text&quot;:&quot;Спорт&quot;},{&quot;value&quot;:&quot;casual&quot;,&quot;text&quot;:&quot;Кэжуал&quot;},{&quot;value&quot;:&quot;smart_casual&quot;,&quot;text&quot;:&quot;Смарт кэжуал&quot;},{&quot;value&quot;:&quot;dressy&quot;,&quot;text&quot;:&quot;Деловой стиль&quot;}]},&quot;weather&quot;:{&quot;values&quot;:[{&quot;value&quot;:&quot;&quot;,&quot;text&quot;:&quot;Любая погода&quot;},{&quot;value&quot;:&quot;cold&quot;,&quot;text&quot;:&quot;Холодно&quot;},{&quot;value&quot;:&quot;chill&quot;,&quot;text&quot;:&quot;Прохладно&quot;},{&quot;value&quot;:&quot;warm&quot;,&quot;text&quot;:&quot;Тепло&quot;},{&quot;value&quot;:&quot;hot&quot;,&quot;text&quot;:&quot;Жарко&quot;}]},&quot;season&quot;:{&quot;values&quot;:[{&quot;value&quot;:&quot;&quot;,&quot;text&quot;:&quot;сезон&quot;},{&quot;value&quot;:&quot;summer&quot;,&quot;text&quot;:&quot;Лето&quot;},{&quot;value&quot;:&quot;fall&quot;,&quot;text&quot;:&quot;Осень&quot;},{&quot;value&quot;:&quot;spring&quot;,&quot;text&quot;:&quot;Весна&quot;},{&quot;value&quot;:&quot;winter&quot;,&quot;text&quot;:&quot;Зима&quot;}]},&quot;age&quot;:{&quot;values&quot;:[{&quot;value&quot;:&quot;&quot;,&quot;text&quot;:&quot;Любой возраст&quot;},{&quot;value&quot;:&quot;17&quot;,&quot;text&quot;:&quot;Подростки&quot;},{&quot;value&quot;:&quot;20&quot;,&quot;text&quot;:&quot;20-летние&quot;},{&quot;value&quot;:&quot;30&quot;,&quot;text&quot;:&quot;30-летние&quot;},{&quot;value&quot;:&quot;40&quot;,&quot;text&quot;:&quot;За 40&quot;},{&quot;value&quot;:&quot;50&quot;,&quot;text&quot;:&quot;За 50&quot;},{&quot;value&quot;:&quot;60&quot;,&quot;text&quot;:&quot;За 60&quot;}]},&quot;looks_type&quot;:{&quot;values&quot;:[{&quot;value&quot;:&quot;all&quot;,&quot;text&quot;:&quot;Все луки&quot;},{&quot;value&quot;:&quot;recommended&quot;,&quot;text&quot;:&quot;Рекомендованные&quot;},{&quot;value&quot;:&quot;favorited&quot;,&quot;text&quot;:&quot;Сохраненные&quot;}],&quot;call_to_action&quot;:{&quot;p&quot;:&quot;Создай аккаунт, чтобы смотреть рекомендованные луки&quot;,&quot;a&quot;:&quot;Начать&quot;}}},&quot;item_1&quot;:null,&quot;item_2&quot;:null,&quot;user_signed_in&quot;:true,&quot;sex&quot;:&quot;men&quot;,&quot;formalness&quot;:&quot;&quot;,&quot;season&quot;:&quot;&quot;,&quot;weather&quot;:&quot;&quot;,&quot;age&quot;:&quot;&quot;,&quot;looks_type&quot;:&quot;all&quot;}"
+             data-hydrate="t" data-react-cache-id="LooksSearchComponent-0" class="looks-search">
+            <div data-turbolinks="false" data-reactroot="">
+                <article class="item empty">
+                    <div class="container"><a>Выбрать вещь</a><i class="icon-caret-down"></i></div>
+                </article>
+                <article class="item empty">
+                    <div class="container"><a>Выбрать вещь</a><i class="icon-caret-down"></i></div>
+                </article>
+                <div class="filter">
+                    <div class="dropdown">
+                        <div class="toggle" data-toggle="dropdown">
+                            <div><span>Любой стиль<!-- --> </span><i class="icon-caret-down"></i></div>
+                        </div>
+                        <ul class="dropdown-menu" data-role="menu"><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/в-спортивном-стиле">Спорт</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/в-стиле-кэжуал">Кэжуал</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/в-деловом-стиле">Деловой стиль</a></ul>
+                    </div>
+                </div>
+                <div class="filter">
+                    <div class="dropdown">
+                        <div class="toggle" data-toggle="dropdown">
+                            <div><span>Любая погода/сезон</span><i class="icon-caret-down"></i></div>
+                        </div>
+                        <ul class="dropdown-menu weather-or-season" data-role="menu"><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/в-холодную-погоду">Холодно</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/в-прохладную-погоду">Прохладно</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/в-теплую-погоду">Тепло</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/в-жару">Жарко</a>
+                            <div class="divider"></div>
+                            <a href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/летом">Лето</a><a
+                                    href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/осенью">Осень</a><a
+                                    href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/весной">Весна</a><a
+                                    href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/зимой">Зима</a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="filter">
+                    <div class="dropdown">
+                        <div class="toggle" data-toggle="dropdown">
+                            <div><span>Любой возраст<!-- --> </span><i class="icon-caret-down"></i></div>
+                        </div>
+                        <ul class="dropdown-menu" data-role="menu"><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/подростки">Подростки</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/20-летние">20-летние</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/30-летние">30-летние</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/за-40">За
+                            40</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/за-50">За
+                            50</a><a
+                                href="https://lookastic.ru/%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%B0%D1%8F-%D0%BC%D0%BE%D0%B4%D0%B0/луки/за-60">За
+                            60</a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="filter">
+                    <div class="dropdown pull-right">
+                        <div class="toggle" data-toggle="dropdown">
+                            <div><span>Все образы<!-- --> </span><i class="icon-caret-down"></i></div>
+                        </div>
+                        <ul class="dropdown-menu" data-role="menu">
+                            <li class=""><span>Рекомендованные</span></li>
+                            <li class=""><span>Сохраненные</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class='looks'
+                 data-infinite-scroll='{&quot;enabled&quot;:true,&quot;current_page&quot;:1,&quot;mode&quot;:&quot;auto&quot;,&quot;total_pages&quot;:100}'
+                 data-service='[&quot;InfiniteScroll&quot;]'>
+            <section class='body' data-infinite-scroll-content>
+                <article class='look' data-infinite-scroll-item data-model='look' data-service='LookShopItemsToggler'>
+                    <figure style='background: white'>
+                        <a href="/мужская-мода/как-носить/куртка-харрингтон-рубашка-с-коротким-рукавом-футболка-с-круглым-вырезом/106461">
+                            <picture>
+                                <source height='450'
+                                        srcset='https://i.imghippo.com/files/quA3895zPM.JPG'
+                                        type='image/webp' width='325'>
+                                <source height='405'
+                                        type='image/jpeg' width='325'>
+                                <img alt="Мужские луки: Черная шерстяная куртка харрингтон и синие джинсы — must have вещи в гардеробе современного джентльмена."
+                                     width="325" height="405" loading="lazy"
+                            </picture>
+                        </a>
+                        <section class='toggle-vote'>
+                            <button class="toggle-resource " aria-label="Сохранить" data-action="toggle-vote"
+                                    data-voteable-type="Look" data-voteable-id="106461" data-voteable-sex="men"
+                                    data-value="1">
+                                <section class="inactive"><i class="icon-heart-o left"></i>Сохранить</section>
+                                <section class="active"><i class="icon-heart left"></i>Удалить</section>
+                            </button>
+                            <button class="toggle-resource " data-action="toggle-vote" data-voteable-type="Look"
+                                    data-voteable-id="106461" data-voteable-sex="men" data-value="-1">
+                                <section class="inactive"><i class="icon-eye-slash"></i></section>
+                                <section class="active"><i class="icon-eye"></i></section>
+                            </button>
+                        </section>
+                        <section class='look-items'>
+                            </a><a class="look-item" title="Темно-синий свитер" style="top: 32%; left: 49%;"
+                                   href="/мужская-мода/темно-зеленая-футболка-с-круглым-вырезом/с-чем-носить">Темно-синий свитер
+                        </a><a class="look-item" title="Белая футболка" style="top: 44%; left: 51%;"
+                               href="/мужская-мода/бежевая-рубашка-с-коротким-рукавом/с-чем-носить">Белая футболка
+                        </a><a class="look-item" title="Темно-синие джинсы" style="top: 68%; left: 56%;"
+                               href="/мужская-мода/синие-джинсы/с-чем-носить">Темно-синие джинсы
+                        </a><a class="look-item" title="Синие кеды" style="top: 89%; left: 59%;"
+                               href="/мужская-мода/коричневые-кожаные-туфли-дерби/с-чем-носить">Синие кеды
+                        </a></section>
+                    </figure>
+                    <section class='look-items-and-shop-items'>
+                        <section class='look-items'>
+                            <a class="look-item" data-item-id="11657335" data-look-id="106461"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/черная-шерстяная-куртка-харрингтон/купить">
+                                <picture>
+                                    <source srcset='https://cdn.lookastic.ru/темно-синий-свитер-с-v-образным-вырезом-original-395658.jpg'
+                                            type='image/webp'>
+                                    <source srcset='https://cdn.lookastic.ru/темно-синий-свитер-с-v-образным-вырезом-original-395658.jpg'
+                                            type='image/jpeg'>
+                                    <img alt="Темно-синий свитер" width="60" height="75" loading="lazy"
+                                         src="https://cdn.lookastic.ru/темно-синий-свитер-с-v-образным-вырезом-original-395658.jpg"/>
+                                </picture>
+                            </a><a class="look-item" data-item-id="1722813" data-look-id="106461"
+                                   data-action="toggle-item-shop-items"
+                                   href="https://lookastic.ru/мужская-мода/бежевая-рубашка-с-коротким-рукавом/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/белая-футболка-с-круглым-вырезом-original-386478.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/белая-футболка-с-круглым-вырезом-original-386478.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Белая футболка" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/белая-футболка-с-круглым-вырезом-original-386478.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="4837314" data-look-id="106461"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/темно-зеленая-футболка-с-круглым-вырезом/купить">
+                            <picture>
+                                <source srcset='https://avatars.mds.yandex.net/i?id=475b5f305eb8c6f8b91b8d1a1e1e439f_l-4569110-images-thumbs&n=13'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/темно-зеленая-футболка-с-круглым-вырезом-original-4837314.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Темно-зеленая футболка с круглым вырезом" width="60" height="75"
+                                     loading="lazy"
+                                     src="https://cdn.lookastic.ru/темно-зеленая-футболка-с-круглым-вырезом-original-4837314.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="468792" data-look-id="106461"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/синие-джинсы/купить">
+                            <picture>
+                                <source srcset='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOfJe6A_Z4WWCeI9HCCwx_S5rLuadWGUQjLA&s'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/синие-джинсы-original-468792.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Синие джинсы" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/синие-джинсы-original-468792.jpg"/>
+                            </picture>
+                        </a></section>
+                        <section class='look-shop-items' data-role='shop-items'></section>
+                    </section>
+
+                </article>
+
+                <article class='look' data-infinite-scroll-item data-model='look' data-service='LookShopItemsToggler'>
+                    <figure style='background: white'>
+                        <a href="/мужская-мода/как-носить/свитер-с-круглым-вырезом-рубашка-с-коротким-рукавом-джинсы/106460">
+                            <picture>
+                                <source height='450'
+                                        srcset='https://i.imghippo.com/files/mbV9621Nc.JPG'
+                                        type='image/webp' width='325'>
+                                <source height='487'
+                                        srcset='https://cdn.lookastic.ru/looks/свитер-с-круглым-вырезом-рубашка-с-коротким-рукавом-джинсы-large-106460.jpg'
+                                        type='image/jpeg' width='325'>
+                                <img alt="Мужские луки: Табачный свитер с круглым вырезом и голубые джинсы в стиле пэчворк — прекрасный образ, если ты хочешь создать раскованный, но в то же время стильный мужской образ."
+                                     width="325" height="487" loading="lazy"
+                                     src="https://cdn.lookastic.ru/looks/свитер-с-круглым-вырезом-рубашка-с-коротким-рукавом-джинсы-large-106460.jpg"/>
+                            </picture>
+                        </a>
+                        <section class='toggle-vote'>
+                            <button class="toggle-resource " aria-label="Сохранить" data-action="toggle-vote"
+                                    data-voteable-type="Look" data-voteable-id="106460" data-voteable-sex="men"
+                                    data-value="1">
+                                <section class="inactive"><i class="icon-heart-o left"></i>Сохранить</section>
+                                <section class="active"><i class="icon-heart left"></i>Удалить</section>
+                            </button>
+                            <button class="toggle-resource " data-action="toggle-vote" data-voteable-type="Look"
+                                    data-voteable-id="106460" data-voteable-sex="men" data-value="-1">
+                                <section class="inactive"><i class="icon-eye-slash"></i></section>
+                                <section class="active"><i class="icon-eye"></i></section>
+                            </button>
+                        </section>
+                        <section class='look-items'>
+                        </a><a class="look-item" title="Белая рубашка" style="top: 45%; left: 52%;"
+                               href="/мужская-мода/табачный-свитер-с-круглым-вырезом/с-чем-носить">Белая рубашка
+                        </a><a class="look-item" title="Темно-синяя куртка" style="top: 64%; left: 55%;"
+                               href="/мужская-мода/голубые-джинсы-в-стиле-пэчворк/с-чем-носить">Темно-синяя куртка
+                        </a><a class="look-item" title="Белые джинсы" style="top: 86%; left: 48%;"
+                               href="/мужская-мода/белые-носки/с-чем-носить">Белые джинсы
+                        </a><a class="look-item" title="Темно-синий свитер" style="top: 50%; left: 54%;"
+                               href="/мужская-мода/светло-коричневые-кожаные-лоферы/с-чем-носить">Темно-синий свитер
+                        </a></section>
+                    </figure>
+                    <section class='look-items-and-shop-items'>
+                        <section class='look-items'>
+                            <a class="look-item" data-item-id="2306103" data-look-id="106460"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/табачный-свитер-с-круглым-вырезом/купить">
+                                <picture>
+                                    <source srcset='https://cdn.lookastic.ru/белая-классическая-рубашка-original-355266.jpg'
+                                            type='image/webp'>
+                                    <source srcset='https://cdn.lookastic.ru/табачный-свитер-с-круглым-вырезом-original-2306103.jpg'
+                                            type='image/jpeg'>
+                                    <img alt="Табачный свитер с круглым вырезом" width="60" height="75" loading="lazy"
+                                         src="https://cdn.lookastic.ru/табачный-свитер-с-круглым-вырезом-original-2306103.jpg"/>
+                                </picture>
+                            </a><a class="look-item" data-item-id="365670" data-look-id="106460"
+                                   data-action="toggle-item-shop-items"
+                                   href="https://lookastic.ru/мужская-мода/белая-рубашка-с-коротким-рукавом/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/темно-синий-свитер-с-v-образным-вырезом-original-395658.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/белая-рубашка-с-коротким-рукавом-original-365670.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Белая рубашка с коротким рукавом" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/белая-рубашка-с-коротким-рукавом-original-365670.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="11345719" data-look-id="106460"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/голубые-джинсы-в-стиле-пэчворк/купить">
+                            <picture>
+                                <source srcset='https://static.cdn.oskelly.ru/product/1929256/item-7141b474-9a97-450c-8af6-8a8d767fba60.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/голубые-джинсы-в-стиле-пэчворк-original-11345719.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Голубые джинсы в стиле пэчворк" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/голубые-джинсы-в-стиле-пэчворк-original-11345719.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="11337154" data-look-id="106460"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/светло-коричневые-кожаные-лоферы/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/белые-брюки-чинос-original-464508.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/светло-коричневые-кожаные-лоферы-original-11337154.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Светло-коричневые кожаные лоферы" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/светло-коричневые-кожаные-лоферы-original-11337154.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="11345333" data-look-id="106460"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/прозрачные-солнцезащитные-очки/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/белые-низкие-кеды-original-542538.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/прозрачные-солнцезащитные-очки-original-11345333.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Прозрачные солнцезащитные очки" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/прозрачные-солнцезащитные-очки-original-11345333.jpg"/>
+                            </picture>
+
+                        <section class='look-shop-items' data-role='shop-items'></section>
+                    </section>
+                </article>
+
+                <article class='look' data-infinite-scroll-item data-model='look' data-service='LookShopItemsToggler'>
+                    <figure style='background: white'>
+                        <a href="/мужская-мода/как-носить/длинное-пальто-свитер-с-круглым-вырезом-рубашка-с-коротким-рукавом/106459">
+                            <picture>
+                                <source height='450'
+                                        srcset='https://i.imghippo.com/files/ZeV6336bd.JPG'
+                                        type='image/webp' width='325'>
+                                <source height='487'
+                                        srcset='https://cdn.lookastic.ru/looks/длинное-пальто-свитер-с-круглым-вырезом-рубашка-с-коротким-рукавом-large-106459.jpg'
+                                        type='image/jpeg' width='325'>
+                                <img alt="Мужские луки: Составив образ из белой рубашки с коротким рукавом, можно уверенно идти на свидание с возлюбленной или встречу с коллегами в непринужденной обстановке."
+                                     width="325" height="487" loading="lazy"
+                                     src="https://cdn.lookastic.ru/looks/длинное-пальто-свитер-с-круглым-вырезом-рубашка-с-коротким-рукавом-large-106459.jpg"/>
+                            </picture>
+                        </a>
+                        <section class='toggle-vote'>
+                            <button class="toggle-resource " aria-label="Сохранить" data-action="toggle-vote"
+                                    data-voteable-type="Look" data-voteable-id="106459" data-voteable-sex="men"
+                                    data-value="1">
+                                <section class="inactive"><i class="icon-heart-o left"></i>Сохранить</section>
+                                <section class="active"><i class="icon-heart left"></i>Удалить</section>
+                            </button>
+                            <button class="toggle-resource " data-action="toggle-vote" data-voteable-type="Look"
+                                    data-voteable-id="106459" data-voteable-sex="men" data-value="-1">
+                                <section class="inactive"><i class="icon-eye-slash"></i></section>
+                                <section class="active"><i class="icon-eye"></i></section>
+                            </button>
+                        </section>
+                        <section class='look-items'>
+                            <a class="look-item" title="Темно-синий свитер" style="top: 45%; left: 50%;"
+                               href="/мужская-мода/оливковая-бейсболка/с-чем-носить">Темно-синий свитер
+                            </a><a class="look-item" title="Серый пиджак" style="top: 55%; left: 52%;"
+                                   href="/мужская-мода/прозрачные-солнцезащитные-очки/с-чем-носить">Серый пиджак
+                        </a><a class="look-item" title="Белая футболка" style="top: 41%; left: 40%;"
+                               href="/мужская-мода/белая-рубашка-с-коротким-рукавом/с-чем-носить">Белая футболка
+                        </a><a class="look-item" title="Голубые джинсы" style="top: 80%; left: 40%;"
+                               href="/мужская-мода/белые-брюки-чинос/с-чем-носить">Голубые джинсы
+                        </a><a class="look-item" title="Белые кеды" style="top: 93%; left: 65%;"
+                               href="/мужская-мода/белые-высокие-кеды-из-плотной-ткани/с-чем-носить">Белые кеды
+                        </a></section>
+                    </figure>
+                    <section class='look-items-and-shop-items'>
+                        <section class='look-items'>
+                            <a class="look-item" data-item-id="429930" data-look-id="106459"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/оливковое-длинное-пальто/купить">
+                                <picture>
+                                    <source srcset='https://cdn.lookastic.ru/темно-синий-свитер-с-v-образным-вырезом-original-395658.jpg'
+                                            type='image/webp'>
+                                    <source srcset='https://cdn.lookastic.ru/оливковое-длинное-пальто-original-429930.jpg'
+                                            type='image/jpeg'>
+                                    <img alt="Оливковое длинное пальто" width="60" height="75" loading="lazy"
+                                         src="https://cdn.lookastic.ru/оливковое-длинное-пальто-original-429930.jpg"/>
+                                </picture>
+                            </a><a class="look-item" data-item-id="404226" data-look-id="106459"
+                                   data-action="toggle-item-shop-items"
+                                   href="https://lookastic.ru/мужская-мода/оранжевый-свитер-с-круглым-вырезом/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/белая-футболка-с-круглым-вырезом-original-386478.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/оранжевый-свитер-с-круглым-вырезом-original-404226.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Оранжевый свитер с круглым вырезом" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/оранжевый-свитер-с-круглым-вырезом-original-404226.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="365670" data-look-id="106459"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/белая-рубашка-с-коротким-рукавом/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/серый-пиджак-original-441252.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/серый-пиджак-original-441252.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Белая рубашка с коротким рукавом" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/серый-пиджак-original-441252.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="464508" data-look-id="106459"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/белые-брюки-чинос/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/голубые-легкие-джинсы-original-9756403.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/голубые-легкие-джинсы-original-9756403.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Белые брюки чинос" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/голубые-легкие-джинсы-original-9756403.jpg"/>
+                            </picture>
+                        </a><a class="look-item" data-item-id="10404085" data-look-id="106459"
+                               data-action="toggle-item-shop-items"
+                               href="https://lookastic.ru/мужская-мода/белые-высокие-кеды-из-плотной-ткани/купить">
+                            <picture>
+                                <source srcset='https://cdn.lookastic.ru/белые-низкие-кеды-original-542538.jpg'
+                                        type='image/webp'>
+                                <source srcset='https://cdn.lookastic.ru/белые-низкие-кеды-original-542538.jpg'
+                                        type='image/jpeg'>
+                                <img alt="Белые высокие кеды из плотной ткани" width="60" height="75" loading="lazy"
+                                     src="https://cdn.lookastic.ru/белые-низкие-кеды-original-542538.jpg"/>
+                            </picture>
+                        </a></section>
+                        <section class='look-shop-items' data-role='shop-items'></section>
+                    </section>
+                </article>
+            </section>
+
+        </section>
+
+
+</main>
+
+
+<script defer src='https://www.googletagmanager.com/gtag/js?id=UA-6317758-12'></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-6317758-12');
+</script>
+<script>
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(55812235, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        trackHash:true
+    });
+</script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function(){
+      new YandexRtb;
+
+    });
+</script>
+
+</body>
+</html>

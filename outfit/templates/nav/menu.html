@@ -18,11 +18,11 @@
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="{% url 'logout_view' %}">Выйти</a>
+                            <a class="btn btn-success" href="{% url 'logout_view' %}">Выйти</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="/login">Вход</a>
+                            <a class="btn btn-success" href="/login">Вход</a>
                         </li>
                     {% endif %}
                 </ul>

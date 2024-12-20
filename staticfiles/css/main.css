@@ -3,19 +3,9 @@
     --primary-color-hover: rgba(42, 165, 96, 0.9);
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-}
-
-.btn-primary:hover, .btn-primary.active, .btn-primary:focus {
-    background-color: var(--primary-color-hover);
-    transform: scale(1.05);
-}
-
-.btn-primary:active {
-    transform: scale(0.95);
-}
-
-.bg-primary {
-    background-color: var(--primary-color);
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

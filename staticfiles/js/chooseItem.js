@@ -1,82 +1,52 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const toggleButtons = document.querySelectorAll('.toggle-button');
     const progressBar = document.getElementById('progress-bar');
     const itemsToAdd = document.getElementById('items-to-add');
     const recommendationLink = document.getElementById('recommendation-link');
-    const maxItems = 10;
+    const cards = document.querySelectorAll('.item-card');
 
-    /**
-     * Updates the progress bar and remaining items display.
-     * @param {number} selectedCount - The number of selected items.
-     */
     function updateProgressBar(selectedCount) {
-        const remaining = Math.max(0, maxItems - selectedCount);
-
-        // Update progress bar styles and text
-        progressBar.style.width = `${(selectedCount / maxItems) * 100}%`;
+        const maxItems = 10;
+        const progress = (selectedCount / maxItems) * 100;
+        progressBar.style.width = `${progress}%`;
         progressBar.setAttribute('aria-valuenow', selectedCount);
         progressBar.textContent = `${selectedCount}/${maxItems}`;
-        itemsToAdd.textContent = remaining;
 
-        // Enable or disable the recommendation link
-        recommendationLink.classList.toggle('disabled', remaining > 0);
+        const remaining = maxItems - selectedCount;
+        itemsToAdd.textContent = remaining > 0 ? remaining : 0;
+        recommendationLink.style.display = remaining <= 0 ? 'block' : 'none';
     }
 
-    /**
-     * Updates the toggle button's text and style based on selection status.
-     * @param {HTMLElement} button - The button element.
-     * @param {boolean} isSelected - Whether the item is selected.
-     */
-    function updateButtonState(button, isSelected) {
-        button.textContent = isSelected ? 'Убрать' : 'Добавить';
-        button.classList.toggle('btn-success', isSelected);
-        button.classList.toggle('btn-success-outline', !isSelected);
-    }
-
-    /**
-     * Handles the toggle button click event.
-     * @param {Event} event - The click event.
-     */
-    function handleToggleClick(event) {
-        event.preventDefault();
-
-        const button = event.target;
-        const itemId = button.dataset.itemId;
-        const card = button.closest('.item-card');
-
+    function toggleItem(card) {
+        const itemId = card.dataset.itemId;
         fetch(`/toggle_item/${itemId}/`)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+                if (!response.ok) throw new Error('Ошибка сети');
                 return response.json();
             })
             .then(data => {
                 if (data && typeof data.selected_count === 'number') {
-                    // Update UI based on the response
-                    card.classList.toggle('selected', data.selected);
-                    updateButtonState(button, data.selected);
+                    const icon = card.querySelector('.icon-overlay i');
+
+                    if (data.selected) {
+                        // Товар добавлен: заменить плюсик на галочку
+                        icon.className = 'bi bi-check-circle-fill text-success';
+                    } else {
+                        // Товар убран: вернуть плюсик
+                        icon.className = 'bi bi-plus-circle-fill text-secondary';
+                    }
+
                     updateProgressBar(data.selected_count);
-                } else {
-                    console.error('Invalid data received from server:', data);
                 }
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            .catch(error => console.error('Ошибка:', error));
     }
 
-    // Attach event listeners to all toggle buttons
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', handleToggleClick);
-
-        // Initialize button state
-        const card = button.closest('.item-card');
-        const isSelected = card.classList.contains('selected');
-        updateButtonState(button, isSelected);
+    cards.forEach(card => {
+        card.addEventListener('click', function () {
+            toggleItem(card);
+        });
     });
 
-    // Initialize progress bar with current selected items count
-    const selectedItemsCount = document.querySelectorAll('.item-card.selected').length;
-    updateProgressBar(selectedItemsCount);
+    // Инициализация прогресса при загрузке страницы
+    updateProgressBar(parseInt(progressBar.getAttribute('aria-valuenow')));
 });

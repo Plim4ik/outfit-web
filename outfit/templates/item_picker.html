@@ -19,25 +19,28 @@
                 {% for item in items %}
                 <div class="col">
                     <div class="card h-100 item-card {% if item.id|stringformat:"s" in selected_items %}selected{% endif %}" data-item-id="{{ item.id }}">
-                        {% if item.image %}
-                            <img src="{{ item.image.url }}" class="card-img-top object-fit-cover" alt="{{ item.name }}" style="height: 200px;">
-                        {% else %}
-                            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                                <i class="bi bi-image"></i>
+                        <div class="card-img-container position-relative">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top object-fit-cover" alt="{{ item.name }}" style="height: 200px;">
+                            {% else %}
+                                <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                    <i class="bi bi-image"></i>
+                                </div>
+                            {% endif %}
+                            <!-- Иконка состояния -->
+                            <div class="icon-overlay d-flex align-items-center justify-content-center">
+                                {% if item.id|stringformat:"s" in selected_items %}
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                {% else %}
+                                    <i class="bi bi-plus-circle-fill text-secondary"></i>
+                                {% endif %}
                             </div>
-                        {% endif %}
+                        </div>
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h5 class="card-title">{{ item.name }}</h5>
-                            <button class="btn btn-outline-success toggle-button" data-item-id="{{ item.id }}">
-                                {% if item.id|stringformat:"s" in selected_items %}
-                                    Убрать
-                                {% else %}
-                                    Добавить
-                                {% endif %}
-                            </button>
                         </div>
                     </div>
-                </div>
+                </div>                
                 {% endfor %}
             </div>
         </div>

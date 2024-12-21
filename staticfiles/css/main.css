@@ -9,3 +9,34 @@
     align-items: center;
     justify-content: center;
 }
+
+.card-img-container {
+    position: relative;
+}
+
+.icon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    pointer-events: none; /* Иконка не перехватывает клики */
+}
+
+.item-card:hover .icon-overlay {
+    opacity: 1; /* Показываем иконку при наведении */
+    pointer-events: auto;
+}
+
+.item-card.selected .icon-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.icon-overlay i {
+    font-size: 48px;
+}

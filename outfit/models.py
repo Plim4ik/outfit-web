@@ -67,3 +67,15 @@ class Outfit(models.Model):
 
     def __str__(self):
         return f"Образ {self.name}"
+    
+class Favorites(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='favorites')
+    outfit = models.ManyToManyField(Outfit, verbose_name='Избранные образы', related_name='favorites')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
+
+    class Meta:
+        verbose_name = 'Избранное'
+        verbose_name_plural = 'Избранные'
+
+    def __str__(self):
+        return f"Избранное {self.user} {self.outfit}"

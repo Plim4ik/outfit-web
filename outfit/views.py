@@ -1,11 +1,40 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User
+from .models import User, Item
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.http import JsonResponse
 
 def home(request):
     return render(request, 'index.html')
+
+
+def wardrobe_welcome(request):
+    items = Item.objects.all()
+    selected_items = request.session.get('selected_items', [])
+
+
+    context = {
+        'items': items,
+        'selected_items': selected_items,
+    }
+    return render(request, 'item_picker.html', context)
+
+def toggle_item(request, item_id):
+    selected_items = request.session.get('selected_items', [])
+    item_id_str = str(item_id)
+
+    if item_id_str in selected_items:
+        selected_items.remove(item_id_str)
+        selected = False  # Item is now unselected
+    else:
+        selected_items.append(item_id_str)
+        selected = True   # Item is now selected
+
+    request.session['selected_items'] = selected_items
+
+    # Return a JSON response with the 'selected' status
+    return JsonResponse({'selected': selected, 'item_id': item_id})
 
 
 def login_page_view(request):

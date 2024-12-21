@@ -55,6 +55,19 @@ def recommendations(request):
     return render(request, 'recommendations.html', context)
 
 
+@login_required
+def add_to_favorites(request, outfit_id):
+    outfit = get_object_or_404(Outfit, id=outfit_id)
+
+    # Check if the outfit is already in the user's favorites
+    if Favorites.objects.filter(user=request.user, outfit=outfit).exists():
+        messages.info(request, "Этот образ уже в вашем избранном!")
+    else:
+        # Add the outfit to favorites
+        Favorites.objects.create(user=request.user, outfit=outfit)
+        messages.success(request, "Образ добавлен в избранное!")
+
+    return redirect('login_page_view')
 def login_page_view(request):
     if request.user.is_authenticated:
         return redirect('my_requests')

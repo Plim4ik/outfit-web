@@ -31,7 +31,10 @@
                                         {% if item.image %}
                                             <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
                                         {% else %}
-                                            <img src="default_image.jpg" class="card-img-top" alt="{{ item.name }}">  <!-- Replace with your default image URL -->
+
+                                            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 150px;">
+                                                <i class="bi bi-image"></i>
+                                            </div>  <!-- Replace with your default image URL -->
                                         {% endif %}
                                         <div class="card-body">
                                             <p class="card-text text-center">{{ item.name }}</p>

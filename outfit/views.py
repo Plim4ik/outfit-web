@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from .models import Item, Outfit, Favorites
 
 def home(request):
     return render(request, 'index.html')
@@ -35,6 +36,23 @@ def toggle_item(request, item_id):
 
     # Return a JSON response with the 'selected' status
     return JsonResponse({'selected': selected, 'item_id': item_id})
+
+
+
+
+def recommendations(request):
+    # Retrieve selected items from the session
+    selected_item_ids = request.session.get('selected_items', [])
+    selected_items = Item.objects.filter(id__in=selected_item_ids)
+
+    # Get outfits that contain selected items
+    outfits = Outfit.objects.filter(items__in=selected_items).distinct()
+
+    context = {
+        'outfits': outfits,
+        'selected_items': selected_items,
+    }
+    return render(request, 'recommendations.html', context)
 
 
 def login_page_view(request):

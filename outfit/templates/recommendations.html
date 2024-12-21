@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <section class="container mt-5">
+        <h1>Рекомендации</h1>
+        <div class="row">
+            {% for outfit in outfits %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ outfit.image.url }}" class="card-img-top" alt="{{ outfit.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ outfit.name }}</h5>
+                            <p class="card-text">{{ outfit.description }}</p>
+
+                            <div class="d-flex justify-content-between">
+                                <small class="text-muted">Вещи в образе:</small>
+                                <a href="#" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#items-{{ outfit.id }}">Показать вещи</a>
+                            </div>
+
+                            <!-- Add heart button to favorite this outfit -->
+                            <button class="btn btn-outline-danger heart-btn" data-outfit-id="{{ outfit.id }}">
+                                <i class="bi bi-heart"></i>
+                            </button>
+
+                            <!-- Slider for items in the outfit -->
+                            <div class="collapse mt-3" id="items-{{ outfit.id }}">
+                                <div class="d-flex overflow-auto">
+                                    {% for item in outfit.items.all %}
+                                    <div class="card me-2" style="min-width: 150px;">
+                                        {% if item.image %}
+                                            <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                                        {% else %}
+                                            <img src="default_image.jpg" class="card-img-top" alt="{{ item.name }}">  <!-- Replace with your default image URL -->
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <p class="card-text text-center">{{ item.name }}</p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

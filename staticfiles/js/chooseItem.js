@@ -1,57 +1,82 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const toggleButtons = document.querySelectorAll('.toggle-button');
     const progressBar = document.getElementById('progress-bar');
     const itemsToAdd = document.getElementById('items-to-add');
     const recommendationLink = document.getElementById('recommendation-link');
-    
-    function updateProgressBar(selectedCount) {
-        const maxItems = 10;
-        // Ensure selectedCount is a number and not NaN
-        const remaining = Math.max(0, maxItems - (Number(selectedCount) || 0));
+    const maxItems = 10;
 
-        progressBar.style.width = `${(remaining / maxItems) * 100}%`;
-        progressBar.setAttribute('aria-valuenow', remaining);
-        progressBar.textContent = `${maxItems - remaining}/${maxItems}`;
+    /**
+     * Updates the progress bar and remaining items display.
+     * @param {number} selectedCount - The number of selected items.
+     */
+    function updateProgressBar(selectedCount) {
+        const remaining = Math.max(0, maxItems - selectedCount);
+
+        // Update progress bar styles and text
+        progressBar.style.width = `${(selectedCount / maxItems) * 100}%`;
+        progressBar.setAttribute('aria-valuenow', selectedCount);
+        progressBar.textContent = `${selectedCount}/${maxItems}`;
         itemsToAdd.textContent = remaining;
 
-        // Enable recommendation link if selected count is equal to max items
-        if (remaining === 0) {
-            recommendationLink.classList.remove('disabled');
-        } else {
-            recommendationLink.classList.add('disabled');
-        }
+        // Enable or disable the recommendation link
+        recommendationLink.classList.toggle('disabled', remaining > 0);
     }
 
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
+    /**
+     * Updates the toggle button's text and style based on selection status.
+     * @param {HTMLElement} button - The button element.
+     * @param {boolean} isSelected - Whether the item is selected.
+     */
+    function updateButtonState(button, isSelected) {
+        button.textContent = isSelected ? 'Убрать' : 'Добавить';
+        button.classList.toggle('btn-success', isSelected);
+        button.classList.toggle('btn-success-outline', !isSelected);
+    }
 
-            const itemId = this.dataset.itemId;
-            const card = this.closest('.item-card');
-            const buttonText = this;
+    /**
+     * Handles the toggle button click event.
+     * @param {Event} event - The click event.
+     */
+    function handleToggleClick(event) {
+        event.preventDefault();
 
-            fetch(`/toggle_item/${itemId}/`)
-                .then(response => {
-                    if (!response.ok) {
-                        console.error('Error fetching:', response.statusText);
-                        throw new Error("Network response was not ok.");
-                    }
-                    return response.json();
-                })
-                .then(data => {
+        const button = event.target;
+        const itemId = button.dataset.itemId;
+        const card = button.closest('.item-card');
+
+        fetch(`/toggle_item/${itemId}/`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && typeof data.selected_count === 'number') {
+                    // Update UI based on the response
                     card.classList.toggle('selected', data.selected);
-                    buttonText.textContent = data.selected ? 'Убрать' : 'Добавить';
-
-                    // Update progress bar and remaining count
+                    updateButtonState(button, data.selected);
                     updateProgressBar(data.selected_count);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
+                } else {
+                    console.error('Invalid data received from server:', data);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Attach event listeners to all toggle buttons
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', handleToggleClick);
+
+        // Initialize button state
+        const card = button.closest('.item-card');
+        const isSelected = card.classList.contains('selected');
+        updateButtonState(button, isSelected);
     });
 
-    // Initialize progress bar with current selected count
+    // Initialize progress bar with current selected items count
     const selectedItemsCount = document.querySelectorAll('.item-card.selected').length;
     updateProgressBar(selectedItemsCount);
 });

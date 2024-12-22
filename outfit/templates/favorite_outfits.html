@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}OutfitMate - Избранные образы{% endblock %}
+
+{% include 'messages.html' %}
+
+{% block content %}
+<main id="body">
+    <section id="favorite-outfits" class="container mb-5">
+        <header class="text-center mb-4">
+            <h1>Ваши избранные образы</h1>
+            <p>Здесь отображаются все образы, которые вы добавили в избранное.</p>
+        </header>
+
+        {% if favorite_outfits %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {% for outfit in favorite_outfits %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-img-container position-relative">
+                        {% if outfit.image %}
+                            <img src="{{ outfit.image.url }}" class="card-img-top object-fit-cover" alt="{{ outfit.name }}" style="height: 200px;">
+                        {% else %}
+                            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="bi bi-image"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title">{{ outfit.name }}</h5>
+                        <p class="card-text">{{ outfit.description }}</p>
+                        <!-- Add heart button to favorite this outfit -->
+                        <button class="btn {% if outfit in favorite_outfits %}btn-danger{% else %}btn-outline-danger{% endif %} heart-btn" data-outfit-id="{{ outfit.id }}">
+                            <i class="bi {% if outfit in favorite_outfits %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-center">У вас нет избранных образов.</p>
+        {% endif %}
+    </section>
+</main>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/addFavorites.js' %}"></script>
+{% endblock %}

@@ -81,6 +81,22 @@ def toggle_favorite(request, outfit_id):
         favorites.outfits.add(outfit)
         return JsonResponse({'success': 'Образ добавлен в избранное!', 'status': 'added'}, status=200)
 
+def favorite_outfits(request):
+    if not request.user.is_authenticated:
+        return redirect('login_page_view')
+    # Get the logged-in user's favorites
+    favorites = Favorites.objects.filter(user=request.user).first()
+    if favorites:
+        favorite_outfits = favorites.outfits.all()
+    else:
+        favorite_outfits = []
+
+    context = {
+        'favorite_outfits': favorite_outfits,
+    }
+    return render(request, 'favorite_outfits.html', context)
+
+
 def login_page_view(request):
     if request.user.is_authenticated:
         return redirect('my_requests')

@@ -6,6 +6,7 @@ urlpatterns = [
     path('choose-item/', views.wardrobe_welcome, name='wardrobe_welcome'),
     path('toggle_item/<int:item_id>/', views.toggle_item, name='toggle_item'),
     path('recommendations/', views.recommendations, name='recommendations'),
+    path('add-to-favorites/<int:outfit_id>/', views.add_to_favorites, name='add_to_favorites'),
     path('login/', views.login_page_view, name='login_page_view'),
     path('register/', views.register_page_view, name='register_page_view'),
     path('logout/', views.logout_view, name='logout_view'),

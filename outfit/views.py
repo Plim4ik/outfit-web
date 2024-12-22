@@ -48,26 +48,38 @@ def recommendations(request):
 
     outfits = Outfit.objects.filter(items__in=selected_items).distinct()
 
+    # Получаем список избранных образов для текущего пользователя
+    if request.user.is_authenticated:
+        favorites = Favorites.objects.filter(user=request.user).first()
+        favorite_outfits = favorites.outfits.all() if favorites else []
+    else:
+        favorite_outfits = []
+
     context = {
         'outfits': outfits,
         'selected_items': selected_items,
+        'favorite_outfits': favorite_outfits,
     }
     return render(request, 'recommendations.html', context)
 
 
-def add_to_favorites(request, outfit_id):
+def toggle_favorite(request, outfit_id):
     if not request.user.is_authenticated:
         return JsonResponse({'error': 'Вы не авторизованы. Войдите в аккаунт.'}, status=401)
     
     outfit = get_object_or_404(Outfit, id=outfit_id)
-
-    favorite, created = Favorites.objects.get_or_create(user=request.user, outfit=outfit)
-
-    if not created:
-        return JsonResponse({'info': 'Этот образ уже в вашем избранном!'}, status=200)
-
-    return JsonResponse({'success': 'Образ добавлен в избранное!'}, status=200)
-
+    
+    # Получаем список избранного пользователя
+    favorites, created = Favorites.objects.get_or_create(user=request.user)
+    
+    if outfit in favorites.outfits.all():
+        # Удаляем образ из избранного
+        favorites.outfits.remove(outfit)
+        return JsonResponse({'success': 'Образ удален из избранного!', 'status': 'removed'}, status=200)
+    else:
+        # Добавляем образ в избранное
+        favorites.outfits.add(outfit)
+        return JsonResponse({'success': 'Образ добавлен в избранное!', 'status': 'added'}, status=200)
 
 def login_page_view(request):
     if request.user.is_authenticated:

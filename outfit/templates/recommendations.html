@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}OutfitMate - Рекомендации{% endblock %}
 
 {% include 'messages.html' %}
@@ -28,8 +29,20 @@
                             </div>
 
                             <!-- Add heart button to favorite this outfit -->
-                            <button class="btn btn-outline-danger heart-btn" data-outfit-id="{{ outfit.id }}">
-                                <i class="bi bi-heart"></i>
+                            <button class="btn 
+                                {% if outfit in favorite_outfits %}
+                                    btn-danger
+                                {% else %}
+                                    btn-outline-danger
+                                {% endif %}
+                                heart-btn" data-outfit-id="{{ outfit.id }}">
+                                <i class="bi 
+                                    {% if outfit in favorite_outfits %}
+                                        bi-heart-fill
+                                    {% else %}
+                                        bi-heart
+                                    {% endif %}
+                                "></i>
                             </button>
 
                             <!-- Slider for items in the outfit -->
@@ -40,10 +53,9 @@
                                         {% if item.image %}
                                             <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
                                         {% else %}
-
                                             <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 150px;">
                                                 <i class="bi bi-image"></i>
-                                            </div>  <!-- Replace with your default image URL -->
+                                            </div>
                                         {% endif %}
                                         <div class="card-body">
                                             <p class="card-text text-center">{{ item.name }}</p>
@@ -63,5 +75,4 @@
 
 {% block scripts %}
 <script src="{% static 'js/addfavorites.js' %}"></script>
-
 {% endblock %}

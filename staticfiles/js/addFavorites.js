@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const outfitId = button.getAttribute('data-outfit-id');
 
             // Отправляем AJAX-запрос
-            fetch(`/add-to-favorites/${outfitId}/`, {
+            fetch(`/toggle-favorite/${outfitId}/`, {
                 method: 'POST',
                 headers: {
                     'X-CSRFToken': getCsrfToken(), // Подставляем CSRF-токен
@@ -20,18 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Меняем внешний вид кнопки на "активный" (например, залитое сердце)
-                    button.classList.remove('btn-outline-danger');
-                    button.classList.add('btn-danger');
-                    button.innerHTML = '<i class="bi bi-heart-fill"></i>';
-
-                    // Показываем уведомление об успешном добавлении
-                    alert('Образ добавлен в избранное!');
-                } else if (data.info) {
-                    // Показываем сообщение, если образ уже в избранном
-                    alert(data.info);
+                    if (data.status === 'added') {
+                        // Меняем внешний вид кнопки на "активный" (например, залитое сердце)
+                        button.classList.remove('btn-outline-danger');
+                        button.classList.add('btn-danger');
+                        button.innerHTML = '<i class="bi bi-heart-fill"></i>';
+                        alert('Образ добавлен в избранное!');
+                    } else if (data.status === 'removed') {
+                        // Меняем внешний вид кнопки на "неактивный" (пустое сердце)
+                        button.classList.remove('btn-danger');
+                        button.classList.add('btn-outline-danger');
+                        button.innerHTML = '<i class="bi bi-heart"></i>';
+                        alert('Образ удален из избранного!');
+                    }
                 } else {
-                    // В случае ошибки
                     alert('Что-то пошло не так. Попробуйте снова.');
                 }
             })

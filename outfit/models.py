@@ -69,13 +69,26 @@ class Outfit(models.Model):
         return f"Образ {self.name}"
     
 class Favorites(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='favorites')
-    outfit = models.ManyToManyField(Outfit, verbose_name='Избранные образы', related_name='favorites')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
+    user = models.OneToOneField(
+        User, 
+        on_delete=models.CASCADE, 
+        verbose_name='Пользователь', 
+        related_name='favourite_outfits'
+    )
+    outfits = models.ManyToManyField(
+        Outfit, 
+        verbose_name='Избранные образы', 
+        related_name='favourited_in'
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True, 
+        verbose_name='Дата создания'
+    )
 
     class Meta:
-        verbose_name = 'Избранное'
-        verbose_name_plural = 'Избранные'
+        verbose_name = 'Список избранных образов'
+        verbose_name_plural = 'Списки избранных образов'
 
     def __str__(self):
-        return f"Избранное {self.user} {self.outfit}"
+        return f"Список избранного {self.user.username}"
+

@@ -4,7 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from django.db import IntegrityError
 from .models import Item, Outfit, Favorites
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def home(request):
     return render(request, 'index.html')
@@ -50,17 +55,18 @@ def recommendations(request):
     return render(request, 'recommendations.html', context)
 
 
-@login_required
 def add_to_favorites(request, outfit_id):
+    if not request.user.is_authenticated:
+        return JsonResponse({'error': 'Вы не авторизованы. Войдите в аккаунт.'}, status=401)
+    
     outfit = get_object_or_404(Outfit, id=outfit_id)
 
-    if Favorites.objects.filter(user=request.user, outfit=outfit).exists():
-        messages.info(request, "Этот образ уже в вашем избранном!")
-    else:
-        Favorites.objects.create(user=request.user, outfit=outfit)
-        messages.success(request, "Образ добавлен в избранное!")
-    
-    return redirect('login_page_view')
+    favorite, created = Favorites.objects.get_or_create(user=request.user, outfit=outfit)
+
+    if not created:
+        return JsonResponse({'info': 'Этот образ уже в вашем избранном!'}, status=200)
+
+    return JsonResponse({'success': 'Образ добавлен в избранное!'}, status=200)
 
 
 def login_page_view(request):

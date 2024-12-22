@@ -34,12 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         alert('Образ удален из избранного!');
                     }
                 } else {
-                    alert('Что-то пошло не так. Попробуйте снова.');
+                    console.log('Авторизация');
                 }
             })
             .catch(error => {
                 console.error('Ошибка:', error);
-                alert('Ошибка сети. Попробуйте позже.');
             });
         });
     });

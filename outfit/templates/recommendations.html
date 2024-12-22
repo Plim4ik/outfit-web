@@ -35,7 +35,8 @@
                                 {% else %}
                                     btn-outline-danger
                                 {% endif %}
-                                heart-btn" data-outfit-id="{{ outfit.id }}">
+                                heart-btn" data-outfit-id="{{ outfit.id }}" 
+                                {% if not user.is_authenticated %}onclick="showLoginAlert()"{% endif %}>
                                 <i class="bi 
                                     {% if outfit in favorite_outfits %}
                                         bi-heart-fill
@@ -75,4 +76,9 @@
 
 {% block scripts %}
 <script src="{% static 'js/addfavorites.js' %}"></script>
+<script>
+    function showLoginAlert() {
+        alert('Пожалуйста, авторизуйтесь, чтобы использовать эту функцию.');
+    }
+</script>
 {% endblock %}

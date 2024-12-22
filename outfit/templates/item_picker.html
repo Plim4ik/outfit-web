@@ -3,13 +3,14 @@
 
 {% block content %}
 <main id="body">
+    {% include 'messages.html' %}
     <section id="wardrobe-welcome" class="container mb-5">
         <header class="text-center mb-4">
             <h1>Добро пожаловать на OutfitMate!</h1>
             <p>OutfitMate проанализирует твой гардероб и покажет, какие образы ты можешь составить</p>
             <p>Необходимо добавить хотя бы 10 вещей из твоего гардероба, чтобы получить рекомендации.</p>
         </header>
-
+        
         <div class="suggested-items-container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 {% for item in items %}

@@ -1,14 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User, Item
-from django.contrib.auth.decorators import login_required
+from .models import User, Item, Outfit, Favorites   
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
-from django.db import IntegrityError
-from .models import Item, Outfit, Favorites
-import logging
 
-logger = logging.getLogger(__name__)
+
+
 
 
 def home(request):
@@ -48,7 +45,6 @@ def recommendations(request):
 
     outfits = Outfit.objects.filter(items__in=selected_items).distinct()
 
-    # Получаем список избранных образов для текущего пользователя
     if request.user.is_authenticated:
         favorites = Favorites.objects.filter(user=request.user).first()
         favorite_outfits = favorites.outfits.all() if favorites else []
@@ -69,22 +65,20 @@ def toggle_favorite(request, outfit_id):
     
     outfit = get_object_or_404(Outfit, id=outfit_id)
     
-    # Получаем список избранного пользователя
     favorites, created = Favorites.objects.get_or_create(user=request.user)
     
     if outfit in favorites.outfits.all():
-        # Удаляем образ из избранного
         favorites.outfits.remove(outfit)
         return JsonResponse({'success': 'Образ удален из избранного!', 'status': 'removed'}, status=200)
     else:
-        # Добавляем образ в избранное
         favorites.outfits.add(outfit)
         return JsonResponse({'success': 'Образ добавлен в избранное!', 'status': 'added'}, status=200)
 
 def favorite_outfits(request):
     if not request.user.is_authenticated:
+        messages.success(request, 'Вы не авторизованы. Войдите в аккаунт.')
         return redirect('login_page_view')
-    # Get the logged-in user's favorites
+
     favorites = Favorites.objects.filter(user=request.user).first()
     if favorites:
         favorite_outfits = favorites.outfits.all()
